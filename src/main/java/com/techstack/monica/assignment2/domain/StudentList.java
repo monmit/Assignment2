@@ -4,10 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudentList {
+    List<Student> listOfStudents = new ArrayList<>();
 
     public void addStudent(Student student){
-        List<Student> listOfStudents = new ArrayList<>();
         listOfStudents.add(student);
     }
+    public void displayStudent(Student student){
+        System.out.println(listOfStudents.get());
+    }
+    public void deleteStudent(Student student){
+        listOfStudents.remove();
+    }
+    public void saveStudent(){
 
+    }
 }
