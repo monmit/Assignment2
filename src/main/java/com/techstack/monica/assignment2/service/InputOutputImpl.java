@@ -5,14 +5,13 @@ import com.techstack.monica.assignment2.domain.StudentList;
 
 import java.util.Scanner;
 
-public class InputOutputimpl {
-    //int[] options = {1,2,3,4,5};
+public class InputOutputImpl {
     int choice;
-    String name;
+    String name = null;
     int age;
-    String address;
+    String address = null;
     int rollNumber;
-    String[] courses;
+    String[] courses = null;
     StudentList studentlist = new StudentList();
 
     public void chooseMethod(){
@@ -22,7 +21,7 @@ public class InputOutputimpl {
         choice = scanner.nextInt();
         if(choice == 1){
             askStudentDetails();
-            studentlist.addStudent();
+            studentlist.addStudent(student);
         } else if (choice == 2){
             studentlist.displayStudent();
         } else if (choice == 3){
@@ -30,7 +29,7 @@ public class InputOutputimpl {
         } else if (choice == 4){
             studentlist.saveStudent();
         }else if (choice == 5){
-            System.out.println("Exit");
+            System.out.println("You are exiting. Do you want to save the changes?");
         }
 
     }
@@ -57,6 +56,7 @@ public class InputOutputimpl {
             String allCourses = scanner.next();
             courses = allCourses.trim().split(",");
         }
-
     }
+    Student student = new Student(name,age, address, rollNumber,courses);
+    // how do i send this object to StudenList methods?
 }
