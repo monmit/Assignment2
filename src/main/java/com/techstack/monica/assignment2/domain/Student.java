@@ -5,11 +5,11 @@ public class Student {
     public int age;
     public String address;
     public int rollNumber;
-    public String courses;
+    public String[] courses;
 
     public String name;
 
-    public Student( String name, int age, String address, int rollNumber, String courses) {
+    public Student(String name, int age, String address, int rollNumber, String[] courses) {
         this.age = age;
         this.address = address;
         this.rollNumber = rollNumber;
@@ -48,9 +48,9 @@ public class Student {
         this.rollNumber = rollNumber;
     }
 
-    public String getCourses() { return courses; }
+    public String[] getCourses() { return courses; }
 
-    public void setCourses(String courses) {
+    public void setCourses(String[] courses) {
         this.courses = courses;
     }
 
