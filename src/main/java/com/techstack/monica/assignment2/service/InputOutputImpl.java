@@ -1,62 +1,85 @@
 package com.techstack.monica.assignment2.service;
 
 import com.techstack.monica.assignment2.domain.Student;
-import com.techstack.monica.assignment2.domain.StudentList;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class InputOutputImpl {
-    int choice;
-    String name = null;
-    int age;
-    String address = null;
-    int rollNumber;
-    String[] courses = null;
-    StudentList studentlist = new StudentList();
 
-    public void chooseMethod(){
+    public int chooseMethod(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("1. add, 2. display, 3. delete, 4. save, 5. exit");
         System.out.println("please choose any one option");
-        choice = scanner.nextInt();
-        if(choice == 1){
-            askStudentDetails();
-            studentlist.addStudent(student);
-        } else if (choice == 2){
-            studentlist.displayStudent();
-        } else if (choice == 3){
-            studentlist.deleteStudent();
-        } else if (choice == 4){
-            studentlist.saveStudent();
-        }else if (choice == 5){
-            System.out.println("You are exiting. Do you want to save the changes?");
-        }
-
+        int choice = scanner.nextInt();
+        return choice;
     }
-        public void askStudentDetails(){
+
+    public Student getStudentDetails(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter the fullName below:");
-        name = scanner.next();
-        System.out.println("Please enter the Age below:");
-        age = scanner.nextInt();
-            // How do is include a check for non integer values?
+        String name = scanner.next();
+        Integer age = getAgeFromUser(scanner);
         System.out.println("Please enter the Address below:");
-        address = scanner.next();
+        String address = scanner.next();
+        Integer rollNumber = getRollNumberFromUser(scanner);
+        System.out.println("There are 6 courses: A, B, C, D, E, F");
+        System.out.println("Please enter at least 4 courses below separated by comma");
+        List<String> courses = new ArrayList<>();
+        courses.addAll(getStudentCourses());
+        Student student = new Student(name,age, address, rollNumber,courses);
+        return student;
+    }
+
+    private Integer getRollNumberFromUser(Scanner scanner) {
+        Integer rollNumber = 0;
         System.out.println("Please enter the RollNumber below:");
         rollNumber = scanner.nextInt();
-            // same here, How do is include a check for non integer values?
-        System.out.println("Please enter atleast 4 courses below");
-        askStudentCourses();
-        // how do i make this input as a student object?
-     }
+        while(rollNumber < 1){
+            System.out.println("Incorrect Roll Number. Roll Number should be greater than 0, Enter Roll Number again:");
+            rollNumber = scanner.nextInt();
+        }
+        return rollNumber;
+    }
 
-    public void askStudentCourses(){
+    private Integer getAgeFromUser(Scanner scanner) {
+        Integer age = 0;
+        System.out.println("Please enter the Age below:");
+        age = scanner.nextInt();
+        while(age < 1){
+            System.out.println("Incorrect Age. Age should be greater than 0, Enter Age again:");
+            age = scanner.nextInt();
+        }
+        return age;
+    }
+
+    private List<String> getStudentCourses(){
+        List<String> courses = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
-        while(courses.length<4){
+        while(courses.size() <4){
             String allCourses = scanner.next();
-            courses = allCourses.trim().split(",");
+            courses = Arrays.asList(allCourses.trim().split(","));
+        }
+        return courses;
+    }
+
+    public int getSortingChoice(){
+        int sortingChoice = 2;
+        return sortingChoice;
+
+    }
+
+    public boolean getUserChoiceToSaveData(){
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.next();
+        if (input.trim().equalsIgnoreCase("n")) {
+            return false;
+        } else {
+            return true;
+
         }
     }
-    Student student = new Student(name,age, address, rollNumber,courses);
-    // how do i send this object to StudenList methods?
+
 }
