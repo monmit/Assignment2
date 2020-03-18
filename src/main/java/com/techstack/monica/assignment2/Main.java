@@ -20,7 +20,7 @@ public class Main {
             } else if (choice == 2) {
                 studentManager.displayAllStudents(input.getSortingChoice());
             } else if (choice == 3) {
-                studentManager.deleteStudent(1);
+                studentManager.deleteStudent(input.getRollNumberFromUser("Please enter the RollNumber of student to be deleted:"));
             } else if (choice == 4) {
                 studentManager.saveStudentsToFile();
             } else if (choice == 5) {

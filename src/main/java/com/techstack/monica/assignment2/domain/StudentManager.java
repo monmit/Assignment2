@@ -18,13 +18,10 @@ public class StudentManager implements Serializable {
         } catch (FileNotFoundException e) {
             //nothing to do
         }
-
     }
-
     public void addStudent(Student student){
         listOfStudents.add(student);
         unSavedChanges = true;
-
     }
     public void displayAllStudents(int sortingChoice){
         if(sortingChoice == 2){
@@ -33,7 +30,6 @@ public class StudentManager implements Serializable {
             Collections.sort(listOfStudents);
         }
         System.out.println(listOfStudents.toString());
-
     }
     public void deleteStudent(int rollNumber) {
         Student toBeDeletedStudent = null;

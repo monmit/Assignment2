@@ -9,11 +9,11 @@ public class Student implements Serializable, Comparable<Student> {
     public int age;
     public String address;
     public int rollNumber;
-    public List<String> courses;
+    public List<Course> courses;
 
     public String name;
 
-    public Student(String name, int age, String address, int rollNumber, List<String> courses) {
+    public Student(String name, int age, String address, int rollNumber, List<Course> courses) {
         this.age = age;
         this.address = address;
         this.rollNumber = rollNumber;
@@ -52,16 +52,11 @@ public class Student implements Serializable, Comparable<Student> {
         this.rollNumber = rollNumber;
     }
 
-    public List<String> getCourses() { return courses; }
+    public List<Course> getCourses() { return courses; }
 
-    public void setCourses(List<String> courses) {
+    public void setCourses(List<Course> courses) {
         this.courses = courses;
     }
-
-    /*@Override
-    public int compareTo(Object o) {
-        return 0;
-    }*/
 
     @Override
     public String toString() {
