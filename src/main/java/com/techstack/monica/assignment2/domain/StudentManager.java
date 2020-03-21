@@ -23,8 +23,8 @@ public class StudentManager implements Serializable {
         listOfStudents.add(student);
         unSavedChanges = true;
     }
-    public void displayAllStudents(int sortingChoice){
-        if(sortingChoice == 2){
+    public void displayAllStudents(SortingOrder sortingChoice){
+        if(sortingChoice == SortingOrder.DESCENDING){
             Collections.sort(listOfStudents, Collections.reverseOrder());
         } else {
             Collections.sort(listOfStudents);

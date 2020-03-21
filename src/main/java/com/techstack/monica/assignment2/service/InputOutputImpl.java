@@ -1,6 +1,7 @@
 package com.techstack.monica.assignment2.service;
 
 import com.techstack.monica.assignment2.domain.Course;
+import com.techstack.monica.assignment2.domain.SortingOrder;
 import com.techstack.monica.assignment2.domain.Student;
 
 import java.util.ArrayList;
@@ -84,10 +85,14 @@ public class InputOutputImpl {
         return courses;
     }
 
-    public int getSortingChoice(){
-        int sortingChoice = 2;
-        return sortingChoice;
-
+    public SortingOrder getSortingChoice(){
+        Scanner scanner = new Scanner(System.in);
+        int sortingChoice = scanner.nextInt();
+        SortingOrder order = SortingOrder.DESCENDING;;
+        if(sortingChoice == 1){
+            order = SortingOrder.ACSENDING;
+        }
+        return order;
     }
 
     public boolean getUserChoiceToSaveData(){
